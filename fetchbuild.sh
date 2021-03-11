@@ -71,8 +71,8 @@ TORBUILDROOT=$PWD/tor_build_root
 mkdir $TORBUILDROOT
 
 # build libevent
-unpackdep https://github.com/libevent/libevent/archive/release-2.1.12-stable.tar.gz 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb
-cd libevent-release-2.1.12-stable
+unpackdep https://github.com/libevent/libevent/archive/release-2.1.11-stable.tar.gz 229393ab2bf0dc94694f21836846b424f3532585bac3468738b7bf752c03901e
+cd libevent-release-2.1.11-stable
 ./autogen.sh
 ./configure --prefix=$TORBUILDROOT/libevent --enable-static --disable-samples \
             --disable-openssl --disable-shared --disable-libevent-regress --disable-debug-mode \
