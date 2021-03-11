@@ -26,6 +26,7 @@ export CC=${target_host}21-clang
 export CXX=${target_host}21-clang++
 export LD=${target_host/v7a/}-ld
 export STRIP=${target_host/v7a}-strip
+export RANLIB=${target_host/v7a}-ranlib
 export CFLAGS="-flto"
 export LDFLAGS="$CFLAGS -pie -static-libstdc++ -fuse-ld=lld"
 
