@@ -46,10 +46,11 @@ index b13a0f1ad..838db8537 100644
 +x86_64_linux_RANLIB=$(default_host_RANLIB)
 +x86_64_linux_NM=$(default_host_NM)
 +x86_64_linux_STRIP=$(default_host_STRIP)
- else 
+ else
  i686_linux_CC=$(default_host_CC) -m32
  i686_linux_CXX=$(default_host_CXX) -m32
 
+ define $(package)_preprocess_cmds
 -  ./autogen.sh
 +  ./autogen.sh && patch -p1 < /repo/0001-fixup.patch
  endef
