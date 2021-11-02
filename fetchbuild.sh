@@ -72,8 +72,8 @@ TORBUILDROOT=$PWD/tor_build_root
 mkdir $TORBUILDROOT
 
 # build libevent
-unpackdep https://github.com/libevent/libevent/archive/release-2.1.11-stable.tar.gz 229393ab2bf0dc94694f21836846b424f3532585bac3468738b7bf752c03901e
-cd libevent-release-2.1.11-stable
+unpackdep https://github.com/libevent/libevent/archive/release-2.1.12-stable.tar.gz 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb
+cd libevent-release-2.1.12-stable
 ./autogen.sh
 ./configure --prefix=$TORBUILDROOT/libevent --enable-static --disable-samples \
             --disable-openssl --disable-shared --disable-libevent-regress --disable-debug-mode \
@@ -91,9 +91,9 @@ cd ..
 
 
 # build openssl
-unpackdep https://github.com/openssl/openssl/archive/OpenSSL_1_1_1j.tar.gz 22d6588e4a7c5ad48fcac2fbf1d035bd43258c22a49457dad0539ded0651b4d2
+unpackdep https://github.com/openssl/openssl/archive/OpenSSL_1_1_1l.tar.gz dac036669576e83e8523afdb3971582f8b5d33993a2d6a5af87daa035f529b4f
 
-cd openssl-OpenSSL_1_1_1j
+cd openssl-OpenSSL_1_1_1l
 SSLOPT="no-gost no-shared no-dso no-ssl3 no-idea no-hw no-dtls no-dtls1 \
         no-weak-ssl-ciphers no-comp -fvisibility=hidden no-err no-psk no-srp"
 
@@ -108,8 +108,8 @@ cd ..
 
 
 # build tor
-unpackdep https://github.com/torproject/tor/archive/tor-0.4.2.8.tar.gz 4352d0f922dfa3511e7a5e89ad58adcebb38224170bbda7c395e29592fdc78e2
-cd tor-tor-0.4.2.8
+unpackdep https://github.com/torproject/tor/archive/tor-0.4.6.8.tar.gz 7a159a822ad9c8a7bfff6ade0a314598465dd055083d066a22cdd3036b250393
+cd tor-tor-0.4.6.8
 ./autogen.sh
 TOROPT="--disable-system-torrc --disable-asciidoc --enable-static-tor --enable-static-openssl \
         --with-zlib-dir=$TORBUILDROOT/zlib --disable-systemd --disable-zstd \
