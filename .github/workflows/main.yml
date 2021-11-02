@@ -26,18 +26,13 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Install Clang
-        uses: egor-tensin/setup-clang@v1
-
-      - name: Running Docker
-        run: docker run -v $PWD:/repo $DOCKERBUILDER@sha256:$DOCKERHASH /bin/bash -c "/repo/fetchbuild.sh $REPO $COMMIT $REPONAME $RENAME $CONFIGURE $TARGETHOST $BITS"
-        env:
-         DOCKERBUILDER: greenaddress/core_builder_for_android
-         DOCKERHASH: 06e3e394f41bd389a11ce51a2bb4ec46ff082e86d25f4f90644aad5b4faaf0f1
-         REPO: https://github.com/bitcoin/bitcoin.git
-         COMMIT: 95ea54ba089610019a74c1176a2c7c0dba144b1c
-         TARGETHOST: aarch64-linux-android
-         BITS: 64
-         REPONAME: bitcoin
-         RENAME: bitcoin
-         CONFIGURE: --disable-man
+  - name: Run .travis.yml build script
+    uses: ktomk/run-travis-yml@v1
+    with:
+      file: .travis.yml
+      steps: |
+        install
+        script
+      allow-failure: false
+    env:
+      TRAVIS_PHP_VERSION: ${{ matrix.php-versions }}
