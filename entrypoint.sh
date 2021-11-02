@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/sh
 set -xeo pipefail
 
 DOCKERHASH=06e3e394f41bd389a11ce51a2bb4ec46ff082e86d25f4f90644aad5b4faaf0f1

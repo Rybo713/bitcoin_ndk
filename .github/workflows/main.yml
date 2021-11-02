@@ -12,34 +12,32 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-   
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       # Runs a set of commands using the runners shell
-      - name: Running Docker 
+      - name: Installing Dependancies
+        run: "/repo/buster_deps.sh"
+        
+      - name: Running Docker
         run: docker run -v $PWD:/repo $DOCKERBUILDER@sha256:$DOCKERHASH /bin/bash -c "/repo/fetchbuild.sh $REPO $COMMIT $REPONAME $RENAME $CONFIGURE $TARGETHOST $BITS"
-        env: 
+        env:
          DOCKERBUILDER: greenaddress/core_builder_for_android
          DOCKERHASH: 06e3e394f41bd389a11ce51a2bb4ec46ff082e86d25f4f90644aad5b4faaf0f1
-         REPO: https://github.com/bitcoin/bitcoin.git    
+         REPO: https://github.com/bitcoin/bitcoin.git
          COMMIT: 95ea54ba089610019a74c1176a2c7c0dba144b1c
          TARGETHOST: aarch64-linux-android
          BITS: 64
          REPONAME: bitcoin
          RENAME: bitcoin
          CONFIGURE: --disable-man
-
-         
-
-         
-         
