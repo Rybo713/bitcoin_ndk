@@ -18,7 +18,7 @@ unpackdep() {
 }
 
 
-export ANDROID_NDK_HOME=/opt/android-ndk-r20b
+export ANDROID_NDK_HOME=/opt/android-ndk-r23b
 export PATH=$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin:${PATH}
 export AR=${target_host/v7a/}-ar
 export AS=${target_host}21-clang
@@ -72,7 +72,7 @@ TORBUILDROOT=$PWD/tor_build_root
 mkdir $TORBUILDROOT
 
 # build libevent
-unpackdep https://github.com/libevent/libevent/archive/release-2.1.12-stable.tar.gz 92e6de1be9ec176428fd2367677e61ceffc2ee1cb119035037a27d346b0403bb
+unpackdep https://github.com/libevent/libevent/archive/release-2.1.12-stable.tar.gz 7180a979aaa7000e1264da484f712d403fcf7679b1e9212c4e3d09f5c93efc24
 cd libevent-release-2.1.12-stable
 ./autogen.sh
 ./configure --prefix=$TORBUILDROOT/libevent --enable-static --disable-samples \
